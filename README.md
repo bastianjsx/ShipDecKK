@@ -1,4 +1,4 @@
-# ShipDecKK 🚢
+# ShipDecKK
 
 ShipDecKK is a high-performance maritime dealership web application specializing in the sale and servicing of luxury yachts, cargo vessels, and commercial liners. Built with **React 19**, **React Router**, and **Tailwind CSS v4**.
 
