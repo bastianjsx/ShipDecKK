@@ -1,17 +1,15 @@
 # ShipDecKK
 
-ShipDecKK is a high-performance maritime dealership web application specializing in the sale and servicing of luxury yachts, cargo vessels, and commercial liners. Built with **React 19**, **React Router**, and **Tailwind CSS v4**.
+ShipDeck is a yacht business website that showcases luxury yachts for sale, provides marine-related services such as maintenance and insurance. Built with **React 19**, **React Router**, and **Tailwind CSS v4**.
 
 ---
 
 ## Features
 
-- **Fleet Showcase & Filtering:** Dynamic catalog supporting category filtering (Luxury Yachts, Cargo Ships, Luxury Liners) and live keyword search.
-- **Responsive Full-Height Hero Banner:** Dynamic viewport-filling hero banner layout tailored for all display sizes without above-the-fold gaps.
-- **Service & Company Profiles:** Dedicated showcases for ship sales, maintenance, insurance, custom design, and emergency assistance.
-- **Newsletter Subscription:** Interactive subscription flow with form validation.
-- **Clean Asset Architecture:** Structured static asset system with semantic naming conventions under `public/images/`.
-- **Strict Typing:** Built with TypeScript with full React Router typegen integration.
+- **Yacht Showcase and Catalog** – Displaying yachts available for customers.
+- **Marine Service Platform** – Presenting services such as ship sales, maintenance, and insurance.
+- **Company Profile** – Introducing the business, its mission, values, and achievements.
+- **Customer Subscription Portal** – collecting customer information through a subscription form.
 
 ---
 
