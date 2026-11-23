@@ -1,16 +1,15 @@
 # ShipDecKK
 
-Developed a responsive multi-page website for a maritime ship dealership selling yachts, cargo ships, and luxury liners. Built with **React 19**, **React Router**, **TypeScript**, and **Tailwind CSS v4**.
+ShipDeck is a yacht business website that showcases luxury yachts for sale, provides marine-related services such as maintenance and insurance. Built with **React 19**, **React Router**, and **Tailwind CSS v4**.
 
 ---
 
-## Key Highlights
+## Features
 
-- **Multi-Page Architecture with Shared Layout:** Structured five core pages (Home, Gallery, Services, About Us, Subscription) with React Router’s file-based routing and a shared layout (`SiteLayout` featuring a sticky header, responsive navigation, and footer) reused across all of them.
-- **Interactive Vessel Catalog:** Implemented an interactive catalog of vessels with real-time keyword search and category filtering (Luxury Yachts, Cargo Ships, Luxury Liners) powered by React state.
-- **Adaptive Responsive Design:** Designed the responsive layout for mobile, tablet, and desktop screens using Tailwind CSS v4 breakpoints, complete with an accessible mobile hamburger menu and viewport-fitting sections.
-- **Robust Error Boundaries & 404:** Integrated a dedicated catch-all 404 route (`/*`) and application-wide `ErrorBoundary` wrapped inside the branded layout.
-- **Strict Type Safety:** Fully typed with TypeScript and integrated with React Router typegen.
+- **Yacht Showcase and Catalog** – Displaying yachts available for customers.
+- **Marine Service Platform** – Presenting services such as ship sales, maintenance, and insurance.
+- **Company Profile** – Introducing the business, its mission, values, and achievements.
+- **Customer Subscription Portal** – collecting customer information through a subscription form.
 
 ---
 
@@ -97,3 +96,8 @@ Run React Router typegen and TypeScript compiler checks:
 ```bash
 npm run typecheck
 ```
+
+---
+
+## Links
+- **UI/UX Design:** [View Figma Prototype](https://www.figma.com/proto/monGy3PZNE6ffoWSHzDYGK/ShipDecKK?node-id=0-1&t=mngRnY9V7czYZxzn-1)
