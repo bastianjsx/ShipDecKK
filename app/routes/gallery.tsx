@@ -1,140 +1,83 @@
 import { IconChevronDown } from "@tabler/icons-react";
 import { useState } from "react";
 
-import { SiteLayout } from "@/components/site/SiteLayout";
-
-const ships = [
-  [
-    "Azure Voyager",
-    "$4,500,000",
-    "Luxury yacht with 5 cabins, swimming pool, and helipad.",
-    "Luxury Yacht",
-    "/images/gallery/azure-voyager.jpg",
-  ],
-  [
-    "Coastal Explorer",
-    "$2,800,000",
-    "Mid-sized yacht perfect for coastal exploration with 3 cabins.",
-    "Luxury Yacht",
-    "/images/gallery/coastal-explorer.jpg",
-  ],
-  [
-    "Marina Bliss",
-    "$6,200,000",
-    "High-end yacht with 6 cabins, jacuzzi, and entertainment system.",
-    "Luxury Yacht",
-    "/images/gallery/marina-bliss.jpg",
-  ],
-  [
-    "Global Freighter",
-    "$8,500,000",
-    "Reliable cargo ship with 8,000 TEU capacity and fuel-efficient engines.",
-    "Cargo Ship",
-    "/images/gallery/global-freighter.jpg",
-  ],
-  [
-    "Oceanic Titan",
-    "$12,000,000",
-    "Large cargo vessel with 15,000 TEU capacity and advanced navigation.",
-    "Cargo Ship",
-    "/images/gallery/oceanic-titan.jpg",
-  ],
-  [
-    "Pacific Hauler",
-    "$15,000,000",
-    "Modern cargo vessel with 18,000 TEU capacity and eco-friendly.",
-    "Cargo Ship",
-    "/images/gallery/pacific-hauler.jpg",
-  ],
-  [
-    "Sapphire Princess",
-    "$75,000,000",
-    "Luxury cruise liner with 1,200 passenger capacity.",
-    "Luxury Liners",
-    "/images/gallery/sapphire-princess.jpg",
-  ],
-  [
-    "Royal Odyssey",
-    "$95,000,000",
-    "Premium cruise liner featuring 1,500 passenger capacity, luxury suites.",
-    "Luxury Liners",
-    "/images/gallery/royal-odyssey.jpg",
-  ],
-  [
-    "Celestial Voyager",
-    "$85,000,000",
-    "Elegant cruise liner with 1,300 passenger capacity.",
-    "Luxury Liners",
-    "/images/gallery/celestial-voyager.jpg",
-  ],
-];
-const cats = ["All Categories", "Luxury Yacht", "Cargo Ship", "Luxury Liners"];
+import { Card, SiteLayout } from "@/components/site/SiteLayout";
+import { BRAND, CATEGORIES, type Category, SHIPS } from "@/data/siteData";
 
 export function meta() {
-  return [{ title: "Gallery | ShipDecKK" }];
+  return [{ title: `Gallery | ${BRAND.name}` }];
 }
 
 export default function Gallery() {
   const [q, setQ] = useState("");
-  const [cat, setCat] = useState(cats[0]);
+  const [cat, setCat] = useState<Category>(CATEGORIES[0]);
   const query = q.trim().toLowerCase();
-  const list = ships.filter(
+
+  const list = SHIPS.filter(
     (s) =>
-      (cat === cats[0] || s[3] === cat) &&
-      (!query || s[0]!.toLowerCase().includes(query)),
+      (cat === CATEGORIES[0] || s.category === cat) &&
+      (!query || s.name.toLowerCase().includes(query)),
   );
+
   return (
-    <SiteLayout title="ShipDeckk Gallery">
-      <div className="px-6 py-12 lg:px-23.75">
-        <div className="grid gap-6 md:grid-cols-2">
+    <SiteLayout title={`${BRAND.name} Gallery`}>
+      <div className="px-4 py-8 sm:px-6 sm:py-12 lg:px-23.75">
+        <div className="grid gap-4 sm:gap-6 md:grid-cols-2">
           <input
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder="Search Ships..."
-            className="h-10 w-full rounded-[7px] border border-[#B7B7B7] px-3.75 text-xl placeholder:text-[#999]"
+            className="h-11 w-full rounded-[7px] border border-[#B7B7B7] px-3.75 text-base placeholder:text-[#999] sm:h-12 sm:text-lg md:text-xl"
           />
           <div className="relative">
             <select
               value={cat}
-              onChange={(e) => setCat(e.target.value)}
-              className="h-10 w-full appearance-none rounded-[7px] border border-[#B7B7B7] bg-white px-3.75 text-xl text-[#292929]"
+              onChange={(e) => setCat(e.target.value as Category)}
+              className="h-11 w-full appearance-none rounded-[7px] border border-[#B7B7B7] bg-white px-3.75 text-base text-[#292929] sm:h-12 sm:text-lg md:text-xl"
             >
-              {cats.map((c) => (
+              {CATEGORIES.map((c) => (
                 <option key={c}>{c}</option>
               ))}
             </select>
             <IconChevronDown
               size={18}
-              className="pointer-events-none absolute right-3 top-3"
+              className="pointer-events-none absolute right-3 top-3.5 sm:top-4"
             />
           </div>
         </div>
-        <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {list.map(([name, price, desc, type, id]) => (
-            <div
-              key={name}
-              className="relative mx-auto flex w-full max-w-89.5 flex-col rounded-[20px] bg-white pb-6 shadow-[0_6px_10px_rgba(0,0,0,0.1)]"
+        <div className="mt-8 grid gap-6 sm:mt-12 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {list.map((ship) => (
+            <Card
+              key={ship.name}
+              maxWidth={false}
+              className="relative flex flex-col pb-6"
             >
               <img
-                src={id}
-                alt={name}
-                className="h-60.5 w-full rounded-t-[20px] object-cover"
+                src={ship.image}
+                alt={ship.name}
+                className="h-52 w-full rounded-t-[20px] object-cover sm:h-60.5"
               />
               <span className="absolute right-3 top-4 rounded-[7px] bg-primary px-3 py-1 text-xs text-white">
-                {type}
+                {ship.category}
               </span>
-              <div className="flex flex-1 flex-col px-4.25 pt-8 text-[#3E3E3E]">
-                <h3 className="text-xl font-semibold">{name}</h3>
-                <p className="mt-3 min-h-13.75 text-lg">{desc}</p>
-                <p className="mt-6 text-xl font-extrabold">{price}</p>
+              <div className="flex flex-1 flex-col px-4.25 pt-6 sm:pt-8 text-[#3E3E3E]">
+                <h3 className="text-lg font-semibold sm:text-xl">
+                  {ship.name}
+                </h3>
+                <p className="mt-2 text-sm sm:mt-3 sm:min-h-13.75 sm:text-base md:text-lg">
+                  {ship.desc}
+                </p>
+                <p className="mt-4 text-lg font-extrabold sm:mt-6 sm:text-xl">
+                  {ship.price}
+                </p>
                 <button
                   type="button"
-                  className="mt-4 h-13.25 w-full rounded-[7px] bg-primary text-xl text-white"
+                  className="mt-4 h-11 w-full rounded-[7px] bg-primary text-lg font-semibold text-white transition hover:opacity-90 sm:h-13.25 sm:text-xl"
                 >
                   View Details
                 </button>
               </div>
-            </div>
+            </Card>
           ))}
         </div>
         {list.length === 0 && (

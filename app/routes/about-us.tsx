@@ -1,4 +1,5 @@
-import { SiteLayout } from "@/components/site/SiteLayout";
+import { Card, SiteLayout } from "@/components/site/SiteLayout";
+import { BRAND } from "@/data/siteData";
 
 const values = [
   [
@@ -16,7 +17,8 @@ const values = [
     "We conduct our business with the highest level of integrity and transparency.",
     "/images/values/integrity.jpg",
   ],
-];
+] as const;
+
 const awards = [
   [
     "Maritime Excellence Award",
@@ -30,20 +32,22 @@ const awards = [
     "Awarded by Consumer Choice Awards",
     "2023",
   ],
-];
+] as const;
 
 export function meta() {
-  return [{ title: "About Us | ShipDecKK" }];
+  return [{ title: `About Us | ${BRAND.name}` }];
 }
 
 export default function About() {
   return (
-    <SiteLayout title="About ShipDeckk">
-      <section className="grid items-center gap-10 px-6 py-14 shadow-md lg:grid-cols-2 lg:px-23.75">
-        <div className="space-y-5 text-lg">
-          <h2 className="text-[35px] text-[#151414]">Our Story</h2>
+    <SiteLayout title={`About ${BRAND.name}`}>
+      <section className="grid items-center gap-8 px-6 py-10 shadow-md sm:py-14 lg:grid-cols-2 lg:gap-10 lg:px-23.75">
+        <div className="space-y-4 text-base sm:space-y-5 sm:text-lg">
+          <h2 className="text-2xl font-bold text-dark sm:text-3xl md:text-[35px]">
+            Our Story
+          </h2>
           <p>
-            Founded in 2020, ShipDecKK has quickly established itself as a
+            Founded in 2020, {BRAND.name} has quickly established itself as a
             leading ship dealership, specializing in high-end yachts, cargo
             ships, and luxury liners. Our journey began with a simple vision: to
             revolutionize the maritime industry by providing exceptional vessels
@@ -57,62 +61,70 @@ export default function About() {
             craftsmen to ensure every vessel meets the highest standards.
           </p>
           <p>
-            Today, ShipDecKK is recognized as a top choice in the maritime
+            Today, {BRAND.name} is recognized as a top choice in the maritime
             industry, known for our reliability, innovation, and customer
             satisfaction. We continue to push boundaries and set new standards
             in ship design and service.
           </p>
         </div>
         <img
-          src="/images/about/story.jpg"
-          alt="ShipDecKK Story"
+          src="/images/services/customization.jpg"
+          alt={`${BRAND.name} Story`}
           className="aspect-77/52 w-full rounded-[15px] object-cover"
         />
       </section>
 
-      <section className="bg-primary px-6 py-12 lg:px-23.75">
-        <h2 className="text-center text-3xl font-semibold text-white md:text-[40px]">
+      <section className="bg-primary px-6 py-10 text-white sm:py-12 lg:px-23.75">
+        <h2 className="text-center text-2xl font-semibold sm:text-3xl md:text-[40px]">
           Our Values and Mission
         </h2>
-        <div className="mt-12 grid gap-8 md:grid-cols-3">
+        <div className="mt-8 grid gap-6 sm:mt-12 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {values.map(([t, d, id]) => (
-            <div
+            <Card
               key={t}
-              className="flex flex-col items-center rounded-[20px] bg-white px-3.5 pb-8 pt-8 text-center shadow-[0_6px_10px_rgba(0,0,0,0.1)]"
+              maxWidth={false}
+              className="flex flex-col items-center px-4 pb-8 pt-8 text-center sm:px-6"
             >
-              <img src={id} alt={t} className="h-37.5 w-37.5 object-contain" />
-              <h3 className="mt-8 text-[30px] font-semibold text-[#151414]">
+              <img
+                src={id}
+                alt={t}
+                className="h-28 w-28 object-contain sm:h-37.5 sm:w-37.5"
+              />
+              <h3 className="mt-6 text-2xl font-semibold text-dark sm:mt-8 sm:text-[30px]">
                 {t}
               </h3>
-              <p className="mt-5 text-lg">{d}</p>
-            </div>
+              <p className="mt-4 text-base sm:mt-5 sm:text-lg">{d}</p>
+            </Card>
           ))}
         </div>
       </section>
 
-      <section className="px-6 py-12 shadow-md lg:px-23.75">
-        <h2 className="text-center text-3xl font-semibold md:text-[40px]">
-          Our Achievement
+      <section className="px-6 py-10 shadow-md sm:py-12 lg:px-23.75">
+        <h2 className="text-center text-2xl font-semibold sm:text-3xl md:text-[40px]">
+          Our Achievements
         </h2>
-        <div className="mt-12 grid gap-8 lg:grid-cols-2">
+        <div className="mt-8 grid gap-6 sm:mt-12 sm:gap-8 lg:grid-cols-2">
           {awards.map(([t, d, y]) => (
-            <div
+            <Card
               key={t}
-              className="flex items-center gap-6 rounded-[20px] bg-white p-6 shadow-[0_6px_10px_rgba(0,0,0,0.1)]"
+              maxWidth={false}
+              className="flex flex-col items-center gap-4 p-5 text-center sm:flex-row sm:items-start sm:gap-6 sm:p-6 sm:text-left"
             >
               <img
                 src="/images/about/award.jpg"
                 alt={t}
                 className="h-12.5 w-12.5 shrink-0 rounded-full object-cover"
               />
-              <div className="text-lg">
-                <h3 className="text-[25px] font-semibold text-[#151414]">
+              <div className="text-base sm:text-lg">
+                <h3 className="text-xl font-semibold text-dark sm:text-[25px]">
                   {t}
                 </h3>
-                <p className="mt-1">{y}</p>
-                <p className="mt-1">{d}</p>
+                <p className="mt-1 text-sm font-medium text-primary sm:text-base">
+                  {y}
+                </p>
+                <p className="mt-1 text-sm text-[#555] sm:text-base">{d}</p>
               </div>
-            </div>
+            </Card>
           ))}
         </div>
       </section>

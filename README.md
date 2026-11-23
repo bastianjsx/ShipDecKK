@@ -1,30 +1,16 @@
 # ShipDecKK
 
-ShipDecKK is a high-performance maritime dealership web application specializing in the sale and servicing of luxury yachts, cargo vessels, and commercial liners. Built with **React 19**, **React Router**, and **Tailwind CSS v4**.
+Developed a responsive multi-page website for a maritime ship dealership selling yachts, cargo ships, and luxury liners. Built with **React 19**, **React Router**, **TypeScript**, and **Tailwind CSS v4**.
 
 ---
 
-## Features
+## Key Highlights
 
-- **Fleet Showcase & Filtering:** Dynamic catalog supporting category filtering (Luxury Yachts, Cargo Ships, Luxury Liners) and live keyword search.
-- **Responsive Full-Height Hero Banner:** Dynamic viewport-filling hero banner layout tailored for all display sizes without above-the-fold gaps.
-- **Service & Company Profiles:** Dedicated showcases for ship sales, maintenance, insurance, custom design, and emergency assistance.
-- **Newsletter Subscription:** Interactive subscription flow with form validation.
-- **Clean Asset Architecture:** Structured static asset system with semantic naming conventions under `public/images/`.
-- **Strict Typing:** Built with TypeScript with full React Router typegen integration.
-
----
-
-## Tech Stack
-
-## Features
-
-- **Fleet Showcase & Filtering:** Dynamic catalog supporting category filtering (Luxury Yachts, Cargo Ships, Luxury Liners) and live keyword search.
-- **Responsive Full-Height Hero Banner:** Dynamic viewport-filling hero banner layout tailored for all display sizes without above-the-fold gaps.
-- **Service & Company Profiles:** Dedicated showcases for ship sales, maintenance, insurance, custom design, and emergency assistance.
-- **Newsletter Subscription:** Interactive subscription flow with form validation.
-- **Clean Asset Architecture:** Structured static asset system with semantic naming conventions under `public/images/`.
-- **Strict Typing:** Built with TypeScript with full React Router typegen integration.
+- **Multi-Page Architecture with Shared Layout:** Structured five core pages (Home, Gallery, Services, About Us, Subscription) with React Router’s file-based routing and a shared layout (`SiteLayout` featuring a sticky header, responsive navigation, and footer) reused across all of them.
+- **Interactive Vessel Catalog:** Implemented an interactive catalog of vessels with real-time keyword search and category filtering (Luxury Yachts, Cargo Ships, Luxury Liners) powered by React state.
+- **Adaptive Responsive Design:** Designed the responsive layout for mobile, tablet, and desktop screens using Tailwind CSS v4 breakpoints, complete with an accessible mobile hamburger menu and viewport-fitting sections.
+- **Robust Error Boundaries & 404:** Integrated a dedicated catch-all 404 route (`/*`) and application-wide `ErrorBoundary` wrapped inside the branded layout.
+- **Strict Type Safety:** Fully typed with TypeScript and integrated with React Router typegen.
 
 ---
 
@@ -40,13 +26,14 @@ ShipDecKK is a high-performance maritime dealership web application specializing
 
 ## Page Routes
 
-| Route | Page | Description |
-| :--- | :--- | :--- |
-| `/` | **Home** | Hero section, featured collections, service highlights, and newsletter CTA |
-| `/gallery` | **Fleet Gallery** | Searchable and filterable vessel inventory |
-| `/service` | **Services** | Detailed service offerings and operational capabilities |
-| `/about-us` | **About Us** | Company history, core values, and industry achievements |
-| `/subscription` | **Subscribe** | Customer subscription and registration form |
+| Route           | Page              | Description                                                                |
+| :-------------- | :---------------- | :------------------------------------------------------------------------- |
+| `/`             | **Home**          | Hero section, featured collections, service highlights, and newsletter CTA |
+| `/gallery`      | **Fleet Gallery** | Searchable and filterable vessel inventory with real-time state filtering  |
+| `/service`      | **Services**      | Detailed service offerings and operational capabilities                    |
+| `/about-us`     | **About Us**      | Company history, core values, and industry achievements                    |
+| `/subscription` | **Subscription**  | Customer newsletter subscription and registration form                     |
+| `/*`            | **404 Not Found** | Dedicated not-found catch-all route with return navigation                 |
 
 ---
 
@@ -55,9 +42,11 @@ ShipDecKK is a high-performance maritime dealership web application specializing
 ```text
 ShipDeckk/
 ├── app/
-│   ├── components/site/      # Shared UI layout (SiteLayout, buttons)
+│   ├── components/site/      # Shared UI layout (SiteLayout, Card, NavyButton)
+│   ├── data/                 # Single source of truth (brand, services, ships)
 │   ├── routes/               # File-based application routes
 │   │   ├── _index.tsx        # / (Home)
+│   │   ├── $.tsx             # /* (404 Not Found catch-all)
 │   │   ├── about-us.tsx      # /about-us
 │   │   ├── gallery.tsx       # /gallery
 │   │   ├── service.tsx       # /service
@@ -65,7 +54,7 @@ ShipDeckk/
 │   ├── entry.client.tsx      # Client-side hydration entry
 │   ├── entry.server.tsx      # Server entry
 │   ├── global.css            # Tailwind theme tokens & font imports
-│   ├── root.tsx              # HTML document shell & meta tags
+│   ├── root.tsx              # HTML document shell, meta tags & ErrorBoundary
 │   └── routes.ts             # React Router flatRoutes config
 ├── public/
 │   └── images/               # Organized static images (hero, gallery, etc.)
@@ -86,7 +75,7 @@ ShipDeckk/
 ### Installation
 
 ```bash
-git clone <YOUR_REPO_URL>
+git clone https://github.com/bastianjsx/ShipDeckk.git
 cd ShipDeckk
 npm install
 ```

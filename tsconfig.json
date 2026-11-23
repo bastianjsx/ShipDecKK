@@ -8,20 +8,9 @@
     "target": "ES2020",
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "ignoreDeprecations": "6.0",
-    "rootDirs": [
-      ".",
-      "./.react-router/types"
-    ],
+    "rootDirs": [".", "./.react-router/types"],
     "paths": {
-      "*": [
-        "./*"
-      ],
-      "@/*": [
-        "./app/*"
-      ],
-      "@shared/*": [
-        "./shared/*"
-      ]
+      "@/*": ["./app/*"]
     }
   },
   "include": [
