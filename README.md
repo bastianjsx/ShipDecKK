@@ -99,8 +99,3 @@ Run React Router typegen and TypeScript compiler checks:
 ```bash
 npm run typecheck
 ```
-
----
-
-## Links
-- **UI/UX Design:** [View Figma Prototype](https://www.figma.com/proto/monGy3PZNE6ffoWSHzDYGK/ShipDecKK?node-id=0-1&t=mngRnY9V7czYZxzn-1)
