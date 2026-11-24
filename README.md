@@ -3,6 +3,7 @@
 ShipDeck is a yacht business website that showcases luxury yachts for sale, provides marine-related services such as maintenance and insurance. Built with **React 19**, **React Router**, and **Tailwind CSS v4**.
 
 [![Live Demo](https://img.shields.io/badge/Visit-Live_Demo-2EA44F?style=for-the-badge&logo=vercel&logoColor=white)](https://ship-deckk-bas.vercel.app/)
+[![Figma Design](https://img.shields.io/badge/View-Figma_Design-F24E1E?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/design/monGy3PZNE6ffoWSHzDYGK/ShipDecKK?node-id=0-1&t=vUpFuR5YLLtEDSQO-1)
 
 ---
 
